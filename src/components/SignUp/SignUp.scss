@@ -1,0 +1,38 @@
+.signUpMain {
+  //width: 80%;
+  margin: auto;
+  background-color: lighten(#ddd, 6%);
+
+  .signUpContainer {
+    width: 300px;
+    margin: auto;
+    border: 1px solid black;
+
+    h2 {
+      text-align: center;
+    }
+
+    .userName,
+    .email,
+    .password {
+      padding-bottom: 10px;
+    }
+
+    div label {
+      padding: 0 10px 0 10px;
+    }
+
+    div input {
+      background-color: lighten(red, 30%);
+    }
+
+    .link {
+      display: block;
+      margin: 10px auto 20px auto;
+      padding: 5px;
+      border: 1px solid black;
+      text-decoration: none;
+      width: 100px;
+    }
+  }
+}

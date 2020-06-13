@@ -1,0 +1,23 @@
+.taskItem {
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+
+  h3 {
+    padding-left: 10px;
+    color: red;
+  }
+
+  button {
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  .delete {
+    margin-left: auto;
+  }
+
+  .start {
+    background-color: lightgreen;
+  }
+}

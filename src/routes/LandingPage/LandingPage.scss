@@ -1,0 +1,39 @@
+.landingPageMain {
+  text-align: center;
+  width: 80%;
+  //border: 1px solid red;
+  margin: auto;
+
+  header {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      //border: 1px solid red;
+      margin-bottom: 0;
+    }
+
+    h3 {
+      margin-top: 0;
+      //border: 1px solid red;
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      background-color: lightgray;
+      padding: 20px;
+
+      &:nth-child(even) {
+        background-color: lighten(#ddd, 6%);
+      }
+    }
+
+    p {
+      color: gray;
+    }
+  }
+}

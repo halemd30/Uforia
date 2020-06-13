@@ -1,0 +1,15 @@
+.headerMain {
+  ul {
+    padding-left: 10px;
+    display: flex;
+
+    li {
+      list-style: none;
+    }
+
+    .login {
+      margin-left: auto;
+      padding: 0 10px;
+    }
+  }
+}

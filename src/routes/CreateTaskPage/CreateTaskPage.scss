@@ -1,0 +1,15 @@
+.createTaskPage {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 40px;
+
+  .taskName {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .startDurationGroup {
+    display: flex;
+    margin-bottom: 20px;
+  }
+}
