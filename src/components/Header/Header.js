@@ -8,7 +8,6 @@ class Nav extends React.Component {
       <main className="headerMain">
         <ul>
           <li className="logo">Logo</li>
-          <li className="login">Login</li>
         </ul>
       </main>
     );

@@ -7,21 +7,15 @@ class SignUp extends React.Component {
     return (
       <main className="signUpMain">
         <div className="signUpContainer">
-          <h2>Sign up</h2>
+          <h2>Demo the app!</h2>
+          <p>
+            This is an open application so we only need a username from you so
+            you can try out the app and keep track of your progress
+          </p>
 
           <div className="userName">
             <label htmlFor="signUpUserName">User name</label>
             <input name="userName" id="signUpUserName"></input>
-          </div>
-
-          <div className="email">
-            <label htmlFor="signUpEmail">Email</label>
-            <input name="email" id="signUpEmail"></input>
-          </div>
-
-          <div className="password">
-            <label htmlFor="signUpPassword">Password</label>
-            <input name="password" id="signUpPassword"></input>
           </div>
 
           <Link className="link" to="/taskList">
