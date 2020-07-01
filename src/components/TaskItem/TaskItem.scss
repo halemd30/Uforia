@@ -1,11 +1,18 @@
+$red: #aa4b41;
+$grey: #d4dde1;
+$black: #2d3033;
+$green: #335252;
+
 .taskItem {
   display: flex;
-  border: 1px solid black;
+  border: 2px solid $green;
   align-items: center;
+  margin-bottom: 5px;
+  border-radius: 5px;
 
   h3 {
     padding-left: 10px;
-    color: red;
+    color: $green;
   }
 
   button {

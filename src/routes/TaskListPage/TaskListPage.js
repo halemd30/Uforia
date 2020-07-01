@@ -1,14 +1,17 @@
 import React from "react";
 import "./TaskListPage.scss";
-import TaskContext from "../../TaskContext";
+//import TaskContext from "../../TaskContext";
 import TaskItem from "../../components/TaskItem/TaskItem";
 import { Link } from "react-router-dom";
+import Context from "../../Context";
 
 class TaskListPage extends React.Component {
-  static contextType = TaskContext;
+  //static contextType = TaskContext;
+  static contextType = Context;
 
   render() {
     let tasks = this.context.tasks;
+    console.log("tasks", tasks);
 
     return (
       <main className="taskListPage">
@@ -19,8 +22,8 @@ class TaskListPage extends React.Component {
         <ul>
           {tasks.map((task) => {
             return (
-              <li key={task.id}>
-                <TaskItem name={task.name} />
+              <li className="taskListItem" key={task.id}>
+                <TaskItem name={task.name} id={task.id} />
               </li>
             );
           })}

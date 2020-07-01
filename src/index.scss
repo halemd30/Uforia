@@ -1,3 +1,8 @@
+$red: #aa4b41;
+$grey: lighten(#d4dde1, 10%);
+$black: #2d3033;
+$green: #335252;
+
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -16,6 +21,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  background-color: $grey;
 }
 
 code {

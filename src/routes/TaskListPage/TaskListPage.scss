@@ -1,7 +1,21 @@
+$red: #aa4b41;
+$grey: #d4dde1;
+$black: #2d3033;
+$green: #335252;
+
 .taskListPage {
   width: 80%;
   margin: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .taskListItem {
+    list-style-type: none;
+    padding-left: 0;
+    border-color: $black;
+  }
 
   .createTaskButton {
     display: block;

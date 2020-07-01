@@ -1,13 +1,31 @@
 import React from "react";
 import "./CreateTaskPage.scss";
-import TaskContext from "../../TaskContext";
+import Context from "../../Context";
 
 class CreateTaskPage extends React.Component {
-  static contextType = TaskContext;
+  static contextType = Context;
+
+  handleCreateTask = (ev) => {
+    console.log("handle click");
+    ev.preventDefault();
+    const { taskName, start, duration, categories } = ev.target;
+    console.log(taskName, start, duration, categories);
+    this.context.addTask(
+      {
+        name: taskName.value,
+        start_time: start.value,
+        duration: duration.value,
+        category: categories.value,
+      },
+      () => {
+        this.props.history.push("/taskList");
+      }
+    );
+  };
 
   render() {
     return (
-      <form className="createTaskPage">
+      <form className="createTaskPage" onSubmit={this.handleCreateTask}>
         <div className="formGroup">
           <input
             type="text"
@@ -42,6 +60,7 @@ class CreateTaskPage extends React.Component {
         <div className="categoryDropdown">
           <label htmlFor="categories">Choose a category:</label>
           <select id="categories">
+            <option value="waking-up">Waking up</option>
             <option value="exercise">Exercise</option>
             <option value="food">Food</option>
             <option value="hydration">Hydration</option>
@@ -54,6 +73,10 @@ class CreateTaskPage extends React.Component {
             <option value="no-smoking">No smoking</option>
           </select>
         </div>
+
+        <button type="submit" className="submit">
+          Submit
+        </button>
       </form>
     );
   }

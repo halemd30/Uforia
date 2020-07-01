@@ -1,15 +1,29 @@
 .headerMain {
+  width: 80%;
+  margin: auto;
+
   ul {
-    padding-left: 10px;
+    padding-left: 0;
     display: flex;
 
     li {
       list-style: none;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .signUp {
+      margin-left: auto;
+    }
+
+    .logout {
+      margin-left: auto;
     }
 
     .login {
-      margin-left: auto;
-      padding: 0 10px;
+      margin-left: 10px;
     }
   }
 }

@@ -3,7 +3,7 @@
   margin: auto;
   background-color: lighten(#ddd, 6%);
 
-  .signUpContainer {
+  .signUpForm {
     width: 300px;
     margin: auto;
     border: 1px solid black;
@@ -12,7 +12,7 @@
       text-align: center;
     }
 
-    .userName,
+    .username,
     .email,
     .password {
       padding-bottom: 10px;
@@ -22,7 +22,7 @@
       padding: 0 10px 0 10px;
     }
 
-    .link {
+    .submit {
       display: block;
       margin: 10px auto 20px auto;
       padding: 5px;
