@@ -16,18 +16,52 @@ class TaskListPage extends React.Component {
     return (
       <main className="taskListPage">
         <h1>Daily Goals!</h1>
+
         <h3>Current goals:</h3>
-        <p>Nothing is added to your current goals</p>
+        <ul className="currentGoals">
+          {tasks
+            .filter((t) => t.start_date !== null && t.end_date === null)
+            .map((task) => {
+              return (
+                <li className="taskListItem" key={task.id}>
+                  <TaskItem {...task} />
+                </li>
+              );
+            })}
+          {tasks.filter((t) => t.start_date !== null && t.end_date === null)
+            .length === 0 && <li>None Available</li>}
+        </ul>
+
         <h3>Goals queue:</h3>
         <ul>
-          {tasks.map((task) => {
-            return (
-              <li className="taskListItem" key={task.id}>
-                <TaskItem name={task.name} id={task.id} />
-              </li>
-            );
-          })}
+          {tasks
+            .filter((t) => t.start_date === null && t.end_date === null)
+            .map((task) => {
+              return (
+                <li className="taskListItem" key={task.id}>
+                  <TaskItem {...task} />
+                </li>
+              );
+            })}
+          {tasks.filter((t) => t.start_date === null && t.end_date === null)
+            .length === 0 && <li>None Available</li>}
         </ul>
+
+        <h3>Completed goals:</h3>
+        <ul>
+          {tasks
+            .filter((t) => t.start_date !== null && t.end_date !== null)
+            .map((task) => {
+              return (
+                <li className="taskListItem" key={task.id}>
+                  <TaskItem {...task} />
+                </li>
+              );
+            })}
+          {tasks.filter((t) => t.start_date !== null && t.end_date !== null)
+            .length === 0 && <li>None Available</li>}
+        </ul>
+
         <button className="createTaskButton">
           <Link to={"/createTask"}>Create a task</Link>
         </button>

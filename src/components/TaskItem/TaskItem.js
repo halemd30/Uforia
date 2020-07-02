@@ -17,13 +17,28 @@ class TaskItem extends React.Component {
           className="delete"
           onClick={() => {
             this.context.deleteTask(this.props.id);
-            //console.log("props.id", this.context.deleteTask);
           }}
         >
           Delete
         </button>
 
-        <button className="start">Start</button>
+        {this.props.start_date === null && (
+          <button
+            className="startStop"
+            onClick={() => this.context.startTask(this.props.id)}
+          >
+            Start
+          </button>
+        )}
+
+        {this.props.start_date !== null && this.props.end_date === null && (
+          <button
+            className="startStop"
+            onClick={() => this.context.endTask(this.props.id)}
+          >
+            Stop
+          </button>
+        )}
       </section>
     );
   }

@@ -124,6 +124,40 @@ class App extends React.Component {
       });
   };
 
+  startTask = (id) => {
+    this.setState(
+      {
+        tasks: this.state.tasks.map((task) => {
+          if (task.id === id) {
+            task.start_date = new Date();
+          }
+          return task;
+        }),
+      },
+      () => {
+        //make api call
+        // patch with the id and the key/value that you are changing
+      }
+    );
+  };
+
+  endTask = (id) => {
+    this.setState({
+      tasks: this.state.tasks.map(
+        (task) => {
+          if (task.id === id) {
+            task.end_date = new Date();
+          }
+          return task;
+        },
+        () => {
+          //make api call
+          // patch with the id and the key/value that you are changing
+        }
+      ),
+    });
+  };
+
   componentDidMount() {
     this.getUserInfo((id) => {
       this.getUserTasks(id, () => {
@@ -145,6 +179,8 @@ class App extends React.Component {
       postUser: this.postUser,
       login: this.login,
       getUserInfo: this.getUserInfo,
+      startTask: this.startTask,
+      endTask: this.endTask,
     };
 
     return (
