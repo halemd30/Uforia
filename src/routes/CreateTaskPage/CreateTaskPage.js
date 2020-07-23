@@ -6,10 +6,8 @@ class CreateTaskPage extends React.Component {
   static contextType = Context;
 
   handleCreateTask = (ev) => {
-    console.log("handle click");
     ev.preventDefault();
     const { taskName, start, duration, categories } = ev.target;
-    console.log(taskName, start, duration, categories);
     this.context.addTask(
       {
         name: taskName.value,

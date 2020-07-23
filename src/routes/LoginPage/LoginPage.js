@@ -16,12 +16,8 @@ export default class LoginPage extends React.Component {
   state = { error: null };
 
   handleLoginSuccess = () => {
-    // console.log("location prop", this.props.location);
-    // const { location, history } = this.props;
-    // const destination = (location.state || {}).from || "/";
     this.context.getUserInfo((id) => {
       this.context.getUserTasks(id, () => {
-        console.log("user tasks", this.context.tasks);
         this.props.history.push(`/taskList`);
       });
     });
@@ -57,20 +53,12 @@ export default class LoginPage extends React.Component {
 
           <div className="username">
             <label htmlFor="username">Username:</label>
-            <input
-              name="username"
-              id="username" //value="halemd30"
-            />
+            <input name="username" id="username" />
           </div>
 
           <div className="password">
             <label htmlFor="password">Password:</label>
-            <input
-              name="password"
-              id="password"
-              type="password"
-              //value="Cravath87"
-            />
+            <input name="password" id="password" type="password" />
           </div>
 
           <button type="submit" className="submit">

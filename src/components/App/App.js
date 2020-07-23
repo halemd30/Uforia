@@ -21,9 +21,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getUserInfo((id) => {
-      this.getUserTasks(id, () => {
-        console.log("app user tasks", this.state.tasks);
-      });
+      this.getUserTasks(id, () => {});
     });
     // if (TokenService.getAuthToken()) {
     //   this.getUserInfo(() => {});
@@ -32,8 +30,6 @@ class App extends React.Component {
 
   // credentials: username, password
   login = (credentials) => {
-    console.log("credentials", JSON.stringify(credentials));
-
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: "POST",
       headers: {
@@ -78,7 +74,6 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((tasks) => {
-        console.log(tasks);
         this.setState(
           {
             tasks,
@@ -137,7 +132,6 @@ class App extends React.Component {
 
   startTask = (taskId) => {
     const date = new Date();
-    console.log("date", date);
     const taskStart = this.state.tasks.map((task) => {
       if (task.id === taskId) {
         task.start_date = date;
@@ -178,7 +172,6 @@ class App extends React.Component {
   };
 
   streakCounter = (taskId) => {
-    console.log("taskId", taskId);
     let taskFound = this.state.tasks.find((task) => task.id === taskId);
     taskFound.streak++;
 
@@ -205,12 +198,10 @@ class App extends React.Component {
 
   renderUserTasks() {
     return <Route path={"/taskList"} component={TaskListPage} />;
-    console.log("render user tasks");
   }
 
   renderLandingPage() {
     return <Route exact path={"/"} component={LandingPage} />;
-    console.log("render landing page");
   }
 
   // when to use fetch in setState for a callback?

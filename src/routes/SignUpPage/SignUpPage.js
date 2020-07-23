@@ -17,7 +17,6 @@ class SignUpPage extends React.Component {
     const { username, password, phone_number } = ev.target;
 
     this.setState({ error: null });
-    console.log("phone", phone_number);
     this.context
       .postUser({
         username: username.value,
