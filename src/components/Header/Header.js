@@ -32,13 +32,33 @@ class Nav extends React.Component {
     );
   }
 
+  renderUserTasks() {
+    return (
+      <>
+        <Link className="logo" to="/taskList">
+          <li>Uforia</li>
+        </Link>
+      </>
+    );
+  }
+
+  renderLandingPage() {
+    return (
+      <>
+        <Link className="logo" to="/">
+          <li>Uforia</li>
+        </Link>
+      </>
+    );
+  }
+
   render() {
     return (
       <nav className="headerMain">
         <ul>
-          <Link className="logo" to="/">
-            <li>Uforia</li>
-          </Link>
+          {TokenService.hasAuthToken()
+            ? this.renderUserTasks()
+            : this.renderLandingPage()}
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
             : this.renderLoginLink()}

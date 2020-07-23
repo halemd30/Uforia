@@ -1,3 +1,8 @@
+$red: #aa4b41;
+$grey: #d4dde1;
+$black: #2d3033;
+$green: #335252;
+
 .headerMain {
   width: 80%;
   margin: auto;
@@ -8,16 +13,26 @@
 
     li {
       list-style: none;
-      border: 1px solid black;
-      border-radius: 10px;
-      padding: 10px;
+      // border: 1px solid $green;
+      // border-radius: 10px;
+      // padding: 10px;
       margin-top: 10px;
     }
 
-    .signUp {
-      margin-left: auto;
+    .logo,
+    .signUp,
+    .logout,
+    .login {
+      border: 1px solid $green;
+      border-radius: 10px;
+      padding: 5px 8px 5px 8px;
+      border-bottom: 6px solid $green;
+      color: $black;
+      //border-left: 4px solid $green;
+      //box-shadow: -5px 3px $green;
     }
 
+    .signUp,
     .logout {
       margin-left: auto;
     }

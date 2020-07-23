@@ -1,7 +1,7 @@
 import React from "react";
 import "./TaskItem.scss";
 import Context from "../../Context";
-import PropTypes from "prop-types";
+import Basket from "../../images/basket.png";
 
 class TaskItem extends React.Component {
   static contextType = Context;
@@ -11,20 +11,30 @@ class TaskItem extends React.Component {
       <section className="taskItem">
         <div className="task">
           <h3>{this.props.name}</h3>
+          <div className="startDuration">
+            <p className="startTime">
+              Start time:{" "}
+              <span className="dynamicInput">{this.props.start_time}</span>
+            </p>
+            <p className="duration">
+              Duration:{" "}
+              <span className="dynamicInput">{this.props.duration}</span>
+            </p>
+          </div>
         </div>
 
-        <button
+        <div
           className="delete"
           onClick={() => {
             this.context.deleteTask(this.props.id);
           }}
         >
-          Delete
-        </button>
+          <img src={Basket} height="30" alt="delete"></img>
+        </div>
 
         {this.props.start_date === null && (
           <button
-            className="startStop"
+            className="start"
             onClick={() => this.context.startTask(this.props.id)}
           >
             Start
@@ -33,7 +43,7 @@ class TaskItem extends React.Component {
 
         {this.props.start_date !== null && this.props.end_date === null && (
           <button
-            className="startStop"
+            className="stop"
             onClick={() => this.context.endTask(this.props.id)}
           >
             Stop

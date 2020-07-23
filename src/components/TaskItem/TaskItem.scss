@@ -6,25 +6,68 @@ $green: #335252;
 .taskItem {
   display: flex;
   border: 2px solid $green;
+  //box-shadow: -12px 36px $green;
   align-items: center;
   margin-bottom: 5px;
-  border-radius: 5px;
+  border-radius: 6px;
+  z-index: 1;
 
   h3 {
-    padding-left: 10px;
+    padding-left: 20px;
+    padding-bottom: 4px;
     color: $green;
+    margin-top: 10px;
+    font-size: 29px;
+    font-family: Zilla Slab;
+    font-style: italic;
+  }
+
+  .task {
+    display: block;
+
+    .startDuration {
+      display: block;
+      padding-left: 20px;
+
+      .dynamicInput {
+        font-family: Parisienne;
+        font-size: 18px;
+      }
+    }
+
+    .startTime,
+    .duration {
+      display: inline-block;
+      font-size: 16.5px;
+    }
+
+    .duration {
+      padding-left: 15px;
+    }
   }
 
   button {
-    height: 25px;
-    margin-right: 10px;
+    //height: 25px;
+    margin-right: 20px;
+    padding: 7px;
   }
 
   .delete {
     margin-left: auto;
+    border: none;
+    margin-top: 7px;
+    margin-right: 10px;
   }
 
   .start {
-    background-color: lightgreen;
+    background-color: lighten($green, 35%);
+    border: none;
+    border-radius: 5px;
+  }
+
+  .stop {
+    background-color: lighten($red, 25%);
+    border: none;
+    border-radius: 5px;
   }
 }

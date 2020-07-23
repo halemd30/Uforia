@@ -16,7 +16,19 @@ class App extends React.Component {
   state = {
     tasks: [],
     currentUser: "",
+    streak: 0,
   };
+
+  componentDidMount() {
+    this.getUserInfo((id) => {
+      this.getUserTasks(id, () => {
+        console.log("app user tasks", this.state.tasks);
+      });
+    });
+    // if (TokenService.getAuthToken()) {
+    //   this.getUserInfo(() => {});
+    // }
+  }
 
   // credentials: username, password
   login = (credentials) => {
@@ -115,7 +127,6 @@ class App extends React.Component {
             throw error;
           });
         }
-        //console.log("delete response", res.json());
       })
       .then(() => {
         this.setState({
@@ -124,53 +135,131 @@ class App extends React.Component {
       });
   };
 
-  startTask = (id) => {
-    this.setState(
-      {
-        tasks: this.state.tasks.map((task) => {
-          if (task.id === id) {
-            task.start_date = new Date();
-          }
-          return task;
-        }),
-      },
-      () => {
-        //make api call
-        // patch with the id and the key/value that you are changing
+  startTask = (taskId) => {
+    const date = new Date();
+    console.log("date", date);
+    const taskStart = this.state.tasks.map((task) => {
+      if (task.id === taskId) {
+        task.start_date = date;
       }
-    );
-  };
-
-  endTask = (id) => {
-    this.setState({
-      tasks: this.state.tasks.map(
-        (task) => {
-          if (task.id === id) {
-            task.end_date = new Date();
-          }
-          return task;
-        },
-        () => {
-          //make api call
-          // patch with the id and the key/value that you are changing
-        }
-      ),
+      return task;
     });
-  };
 
-  componentDidMount() {
-    this.getUserInfo((id) => {
-      this.getUserTasks(id, () => {
-        console.log("user tasks", this.tasks);
+    fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then(() => {
+      this.setState({
+        tasks: taskStart,
       });
     });
-    // if (TokenService.getAuthToken()) {
-    //   this.getUserInfo(() => {});
-    // }
+  };
+
+  endTask = (taskId) => {
+    const endStart = this.state.tasks.map((task) => {
+      if (task.id === taskId) {
+        task.end_date = new Date();
+      }
+      return task;
+    });
+
+    fetch(`${config.API_ENDPOINT}/tasks/end/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then(() => {
+      this.setState({
+        tasks: endStart,
+      });
+    });
+  };
+
+  streakCounter = (taskId) => {
+    console.log("taskId", taskId);
+    let taskFound = this.state.tasks.find((task) => task.id === taskId);
+    taskFound.streak++;
+
+    fetch(`${config.API_ENDPOINT}/tasks/${taskId}/modify`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then(() => {
+      this.setState({
+        streak: taskFound.streak,
+      });
+    });
+  };
+
+  resetStreak = (taskId, cb) => {
+    fetch(`${config.API_ENDPOINT}/tasks/reset/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then(cb);
+  };
+
+  renderUserTasks() {
+    return <Route path={"/taskList"} component={TaskListPage} />;
+    console.log("render user tasks");
   }
+
+  renderLandingPage() {
+    return <Route exact path={"/"} component={LandingPage} />;
+    console.log("render landing page");
+  }
+
+  // when to use fetch in setState for a callback?
+  // startTask = (taskId) => {
+  //   this.setState(
+  //     {
+  //       tasks: this.state.tasks.map((task) => {
+  //         if (task.id === taskId) {
+  //           task.start_date = new Date();
+  //         }
+  //         return task;
+  //       }),
+  //     },
+  //     // patch with the id and the key/value that you are changing
+  //     () => {
+  //       fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
+  //         method: "PATCH",
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //       });
+  //     }
+  //   );
+  // };
+
+  // endTask = (taskId) => {
+  //   this.setState(
+  //     {
+  //       tasks: this.state.tasks.map((task) => {
+  //         if (task.id === taskId) {
+  //           task.end_date = new Date();
+  //         }
+  //         return task;
+  //       }),
+  //     },
+  //     () => {
+  //       fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
+  //         method: "PATCH",
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //       });
+  //     }
+  //   );
+  // };
 
   render() {
     const contextValue = {
+      streak: this.state.streak,
       tasks: this.state.tasks,
       currentUser: this.state.currentUser,
       addTask: this.addTask,
@@ -181,6 +270,8 @@ class App extends React.Component {
       getUserInfo: this.getUserInfo,
       startTask: this.startTask,
       endTask: this.endTask,
+      streakCounter: this.streakCounter,
+      resetStreak: this.resetStreak,
     };
 
     return (
