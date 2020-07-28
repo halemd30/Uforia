@@ -16,11 +16,13 @@ export default class LoginPage extends React.Component {
   state = { error: null };
 
   handleLoginSuccess = () => {
-    this.context.getUserInfo((id) => {
-      this.context.getUserTasks(id, () => {
-        this.props.history.push(`/taskList`);
+    if (TokenService.getAuthToken()) {
+      this.context.getUserInfo((id) => {
+        this.context.getUserTasks(id, () => {
+          this.props.history.push(`/taskList`);
+        });
       });
-    });
+    }
   };
 
   handleSubmitJwtAuth = (ev) => {
@@ -49,16 +51,20 @@ export default class LoginPage extends React.Component {
           className="signUpForm loginForm"
           onSubmit={this.handleSubmitJwtAuth}
         >
-          <h2>Login</h2>
+          <h1>Login</h1>
 
-          <div className="username">
-            <label htmlFor="username">Username:</label>
-            <input name="username" id="username" />
-          </div>
+          {this.state.error && <p className="red">{this.state.error}</p>}
 
-          <div className="password">
-            <label htmlFor="password">Password:</label>
-            <input name="password" id="password" type="password" />
+          <div className="inputContainer">
+            <div className="username">
+              <label htmlFor="username">Username:</label>
+              <input name="username" id="username" />
+            </div>
+
+            <div className="password">
+              <label htmlFor="password">Password:</label>
+              <input name="password" id="password" type="password" />
+            </div>
           </div>
 
           <button type="submit" className="submit">

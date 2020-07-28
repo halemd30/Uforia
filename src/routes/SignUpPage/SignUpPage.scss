@@ -1,34 +1,76 @@
+$red: #aa4b41;
+$grey: #d4dde1;
+$black: #2d3033;
+$green: #335252;
+$lightgreen: #d8e0bb;
+$yellow: #fff5c3;
+$blue: #76aac2;
+
 .signUpMain {
-  //width: 80%;
   margin: auto;
-  background-color: lighten(#ddd, 6%);
+  padding-top: 60px;
 
   .signUpForm {
-    width: 300px;
+    width: 80%;
     margin: auto;
-    border: 1px solid black;
+    max-width: 400px;
+    border: 2px solid $green;
+    border-radius: 5px;
+    padding: 10px 20px 15px 20px;
+    background-color: lighten($lightgreen, 15%);
 
-    h2 {
+    h1 {
       text-align: center;
+      font-family: Bad Script;
     }
 
     .username,
-    .email,
+    .phone,
     .password {
-      padding-bottom: 10px;
+      padding-bottom: 12px;
+      width: 300px;
+      margin: auto;
+      display: flex;
     }
 
-    div label {
-      padding: 0 10px 0 10px;
+    .inputContainer {
+      label {
+        padding: 5px 10px 0 0;
+      }
+
+      input {
+        height: 24px;
+        border-radius: 4px;
+        border: 1px solid $green;
+        flex: 1;
+        padding-left: 5px;
+      }
+    }
+
+    .red {
+      border: 1px solid $red;
+      color: $red;
+      text-align: center;
+      padding: 9px 0 3px 0;
+      border-radius: 4px;
+      margin-top: 0;
     }
 
     .submit {
+      color: $black;
       display: block;
-      margin: 10px auto 20px auto;
-      padding: 5px;
-      border: 1px solid black;
-      text-decoration: none;
-      width: 100px;
+      margin: auto;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      border: 1px solid $green;
+      border-radius: 10px;
+      padding: 10px 14px 9px 14px;
+      border-top: 6px solid $green;
+
+      &:hover {
+        background-color: lighten($blue, 28%);
+        cursor: pointer;
+      }
     }
   }
 }

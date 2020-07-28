@@ -2,6 +2,9 @@ $red: #aa4b41;
 $grey: #d4dde1;
 $black: #2d3033;
 $green: #335252;
+$lightgreen: #d8e0bb;
+$yellow: #fff5c3;
+$blue: #76aac2;
 
 .headerMain {
   width: 80%;
@@ -25,11 +28,14 @@ $green: #335252;
     .login {
       border: 1px solid $green;
       border-radius: 10px;
-      padding: 5px 8px 5px 8px;
+      padding: 3px 8px 5px 8px;
       border-bottom: 6px solid $green;
       color: $black;
-      //border-left: 4px solid $green;
-      //box-shadow: -5px 3px $green;
+
+      &:hover {
+        background-color: lighten($blue, 28%);
+        cursor: pointer;
+      }
     }
 
     .signUp,

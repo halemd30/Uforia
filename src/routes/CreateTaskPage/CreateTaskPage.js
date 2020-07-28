@@ -23,59 +23,65 @@ class CreateTaskPage extends React.Component {
 
   render() {
     return (
-      <form className="createTaskPage" onSubmit={this.handleCreateTask}>
-        <div className="formGroup">
-          <input
-            type="text"
-            className="taskName"
-            name="taskName"
-            id="taskName"
-            placeholder="Describe your task in a few short words"
-          />
-        </div>
+      <section className="createTaskPage">
+        <h1>Create a goal</h1>
 
-        <div className="startDurationGroup">
+        <form className="createTaskForm" onSubmit={this.handleCreateTask}>
           <div className="formGroup">
-            <div className="startContainer">
-              <label htmlFor="start">Start time: </label>
-              <input type="text" className="start" name="start" id="start" />
+            <input
+              type="text"
+              className="taskName"
+              name="taskName"
+              id="taskName"
+              placeholder="Describe your task in a few short words"
+            />
+          </div>
+
+          <div className="startDurationGroup">
+            <div className="formGroup">
+              <div className="startContainer">
+                <label htmlFor="start">Start time: </label>
+                <input type="text" className="start" name="start" id="start" />
+              </div>
+            </div>
+
+            <div className="formGroup">
+              <div className="durationContainer">
+                <label htmlFor="duration">Duration: </label>
+                <input
+                  type="text"
+                  className="duration"
+                  name="duration"
+                  id="duration"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="formGroup">
-            <div className="durationContainer">
-              <label htmlFor="duration">Duration: </label>
-              <input
-                type="text"
-                className="duration"
-                name="duration"
-                id="duration"
-              />
-            </div>
+          <div className="categoryDropdown">
+            <select id="categories">
+              <option value="" disabled selected>
+                Pick a category
+              </option>
+              <option value="waking-up">Waking up</option>
+              <option value="exercise">Exercise</option>
+              <option value="food">Food</option>
+              <option value="hydration">Hydration</option>
+              <option value="mindfulness">Mindfulness</option>
+              <option value="sleep">Sleep</option>
+              <option value="organization">Organization</option>
+              <option value="education">Education</option>
+              <option value="no-tech">No tech</option>
+              <option value="no-booze">No booze</option>
+              <option value="no-smoking">No smoking</option>
+            </select>
           </div>
-        </div>
 
-        <div className="categoryDropdown">
-          <label htmlFor="categories">Choose a category:</label>
-          <select id="categories">
-            <option value="waking-up">Waking up</option>
-            <option value="exercise">Exercise</option>
-            <option value="food">Food</option>
-            <option value="hydration">Hydration</option>
-            <option value="mindfulness">Mindfulness</option>
-            <option value="sleep">Sleep</option>
-            <option value="organization">Organization</option>
-            <option value="education">Education</option>
-            <option value="no-tech">No tech</option>
-            <option value="no-booze">No booze</option>
-            <option value="no-smoking">No smoking</option>
-          </select>
-        </div>
-
-        <button type="submit" className="submit">
-          Submit
-        </button>
-      </form>
+          <button type="submit" className="submit">
+            Submit
+          </button>
+        </form>
+      </section>
     );
   }
 }

@@ -20,15 +20,24 @@ $green: #335252;
 
   p {
     margin: auto;
-    background-color: lighten($black, 30%);
+    background-color: lighten($black, 40%);
     margin-bottom: 8px;
     text-align: center;
     border-radius: 5px;
 
+    &:hover {
+      background-color: $grey;
+      border: 1px solid $green;
+    }
+
     a {
-      color: $grey;
+      color: lighten($grey, 20%);
       display: block;
       padding: 8px 50px 2px 50px;
+
+      &:hover {
+        color: $green;
+      }
     }
   }
 }

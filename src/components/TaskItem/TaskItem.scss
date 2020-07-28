@@ -55,19 +55,42 @@ $green: #335252;
   .delete {
     margin-left: auto;
     border: none;
-    margin-top: 7px;
-    margin-right: 10px;
+    margin-right: 8px;
+    padding: 8px 3px 0 3px;
+
+    &:hover {
+      box-shadow: 0 0 3px 0;
+      background-color: lighten($grey, 10%);
+      color: $green;
+      cursor: pointer;
+      border-radius: 5px;
+      color: $red;
+    }
   }
 
   .start {
-    background-color: lighten($green, 35%);
+    background-color: lighten($green, 45%);
     border: none;
     border-radius: 5px;
+
+    &:hover {
+      box-shadow: 0 0 3px 0;
+      background-color: lighten($grey, 10%);
+      color: $green;
+      cursor: pointer;
+    }
   }
 
   .stop {
     background-color: lighten($red, 25%);
     border: none;
     border-radius: 5px;
+
+    &:hover {
+      box-shadow: 0 0 3px 0;
+      background-color: lighten($grey, 10%);
+      color: $red;
+      cursor: pointer;
+    }
   }
 }

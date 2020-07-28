@@ -38,29 +38,48 @@ class SignUpPage extends React.Component {
     return (
       <main className="signUpMain loginMain">
         <form className="signUpForm" onSubmit={this.handleSubmit}>
-          <h2>Sign up</h2>
+          <h1>Sign up</h1>
 
-          <div className="username">
-            <label htmlFor="username">Username:</label>
-            <input name="username" type="text" id="username" />
+          <div className="inputContainer">
+            <div className="username">
+              <label htmlFor="username">Username:</label>
+              <input name="username" type="text" id="username" required />
+            </div>
+
+            <div role="alert">
+              {this.state.error &&
+                this.state.error.toLowerCase().includes("username") && (
+                  <p className="red">{this.state.error}</p>
+                )}
+            </div>
+
+            <div className="password">
+              <label htmlFor="password">Password:</label>
+              <input name="password" type="password" id="password" required />
+            </div>
+
+            <div role="alert">
+              {this.state.error &&
+                this.state.error.toLowerCase().includes("password") && (
+                  <p className="red">{this.state.error}</p>
+                )}
+            </div>
+
+            <div className="phone">
+              <label htmlFor="phone_number">Phone number:</label>
+              <input
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                name="phone"
+                type="tel"
+                id="phone_number"
+                required
+              />
+            </div>
           </div>
 
-          <div className="password">
-            <label htmlFor="password">Password:</label>
-            <input name="password" type="text" id="password" />
-          </div>
-
-          <div className="phone">
-            <label htmlFor="phone_number">Phone number:</label>
-            <input
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              name="phone"
-              type="tel"
-              id="phone_number"
-            />
-          </div>
-
-          <button type="submit">Submit</button>
+          <button type="submit" className="submit">
+            Submit
+          </button>
         </form>
       </main>
     );

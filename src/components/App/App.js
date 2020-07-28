@@ -20,9 +20,11 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.getUserInfo((id) => {
-      this.getUserTasks(id, () => {});
-    });
+    if (TokenService.getAuthToken()) {
+      this.getUserInfo((id) => {
+        this.getUserTasks(id, () => {});
+      });
+    }
     // if (TokenService.getAuthToken()) {
     //   this.getUserInfo(() => {});
     // }
@@ -37,7 +39,7 @@ class App extends React.Component {
       },
       body: JSON.stringify(credentials),
     }).then((res) => {
-      return res.json();
+      return !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
     });
   };
 
@@ -49,7 +51,7 @@ class App extends React.Component {
       },
       body: JSON.stringify(user),
     }).then((res) => {
-      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
+      return !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
     });
   };
 
