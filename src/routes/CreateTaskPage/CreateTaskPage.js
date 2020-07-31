@@ -41,7 +41,13 @@ class CreateTaskPage extends React.Component {
             <div className="formGroup">
               <div className="startContainer">
                 <label htmlFor="start">Start time: </label>
-                <input type="text" className="start" name="start" id="start" />
+                <input
+                  placeholder="(optional)"
+                  type="text"
+                  className="start"
+                  name="start"
+                  id="start"
+                />
               </div>
             </div>
 
@@ -49,6 +55,7 @@ class CreateTaskPage extends React.Component {
               <div className="durationContainer">
                 <label htmlFor="duration">Duration: </label>
                 <input
+                  placeholder="(optional)"
                   type="text"
                   className="duration"
                   name="duration"

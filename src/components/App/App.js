@@ -25,9 +25,6 @@ class App extends React.Component {
         this.getUserTasks(id, () => {});
       });
     }
-    // if (TokenService.getAuthToken()) {
-    //   this.getUserInfo(() => {});
-    // }
   }
 
   // credentials: username, password
@@ -156,7 +153,9 @@ class App extends React.Component {
   endTask = (taskId) => {
     const endStart = this.state.tasks.map((task) => {
       if (task.id === taskId) {
-        task.end_date = new Date();
+        task.end_date = null;
+        task.start_date = null;
+        task.streak = 0;
       }
       return task;
     });

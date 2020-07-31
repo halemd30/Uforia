@@ -3,7 +3,7 @@ import "./TaskListPage.scss";
 import TaskItem from "../../components/TaskItem/TaskItem";
 import { Link } from "react-router-dom";
 import Context from "../../Context";
-import Checked from "../../images/checkmark.png";
+import Checked from "../../images/checked.png";
 
 import moment from "moment";
 
@@ -47,22 +47,30 @@ class TaskListPage extends React.Component {
                           {moment(task.start_date).format("MMMM Do YYYY")}
                         </span>
                       </p>
-                      {task.target_streak > task.streak && (
+                      {task.target_streak > task.streak ? (
                         <button
                           className="counter"
                           onClick={() => this.context.streakCounter(task.id)}
                         >
                           Mark it!
                         </button>
+                      ) : (
+                        <img
+                          className="checked"
+                          src={Checked}
+                          width="30"
+                          height="30"
+                          alt="check mark"
+                        />
                       )}
-                      {task.target_streak === task.streak && (
+                      {/* {task.target_streak === task.streak && (
                         <img
                           className="checked"
                           src={Checked}
                           width="30"
                           height="30"
                         ></img>
-                      )}
+                      )} */}
                       <p className="streak">
                         Streak:{" "}
                         <span className="dynamicInput">{task.streak}</span>
@@ -91,7 +99,7 @@ class TaskListPage extends React.Component {
             .length === 0 && <li className="empty">None Available</li>}
         </ul>
 
-        <h3>Completed goals:</h3>
+        {/* <h3>Completed goals:</h3>
         <ul>
           {tasks
             .filter((t) => t.start_date !== null && t.end_date !== null)
@@ -104,7 +112,7 @@ class TaskListPage extends React.Component {
             })}
           {tasks.filter((t) => t.start_date !== null && t.end_date !== null)
             .length === 0 && <li className="empty">None Available</li>}
-        </ul>
+        </ul> */}
 
         <p className="createTaskButton">
           <Link className="button" to={"/createTask"}>
