@@ -11,5 +11,5 @@ Uforia allows users to create their own account and keep track of daily habits t
 HTML, SCSS, Javascript, React
 
 ### Landing Page
-<img src='/src/images/landing_page.png' width='350' alt='Langing Page'>
+<img src='/src/images/landing_page.png' width='450' alt='Langing Page'>
 
