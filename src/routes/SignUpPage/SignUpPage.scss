@@ -17,23 +17,21 @@ $blue: #76aac2;
     border: 2px solid $green;
     border-radius: 5px;
     padding: 10px 20px 15px 20px;
-    background-color: lighten($lightgreen, 15%);
+    background-color: lighten($lightgreen, 13%);
 
     h1 {
       text-align: center;
       font-family: Bad Script;
     }
-
-    .username,
-    .phone,
-    .password {
-      padding-bottom: 12px;
-      width: 300px;
-      margin: auto;
-      display: flex;
-    }
-
     .inputContainer {
+      .username,
+      .phone,
+      .password {
+        padding-bottom: 12px;
+        margin: auto;
+        display: flex;
+      }
+
       label {
         padding: 5px 10px 0 0;
       }

@@ -6,6 +6,12 @@ $lightgreen: #d8e0bb;
 $yellow: #fff5c3;
 $blue: #76aac2;
 
+@media screen and (max-width: 500px) {
+  .hideMobile {
+    display: none;
+  }
+}
+
 .taskListPage {
   width: 80%;
   margin: auto;
@@ -44,7 +50,6 @@ $blue: #76aac2;
     }
 
     .taskListCurrent {
-      //border-color: $black;
       text-align: left;
 
       border-radius: 5px;
@@ -52,11 +57,9 @@ $blue: #76aac2;
       .statusWrapper {
         display: flex;
         padding: 0 20px 0 20px;
-        //margin-top: -10px;
         color: $grey;
         margin-right: 15px;
         margin-top: -14px;
-        //background-color: $green;
 
         .dynamicInput {
           font-family: Parisienne;
@@ -102,7 +105,6 @@ $blue: #76aac2;
 
     .button {
       color: $black;
-      //display: block;
       margin: auto;
       border: 1px solid $green;
       border-radius: 10px;

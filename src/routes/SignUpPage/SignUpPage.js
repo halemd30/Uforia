@@ -66,14 +66,8 @@ class SignUpPage extends React.Component {
             </div>
 
             <div className="phone">
-              <label htmlFor="phone_number">Phone number:</label>
-              <input
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                name="phone"
-                type="tel"
-                id="phone_number"
-                required
-              />
+              <label htmlFor="phone_number">Phone #:</label>
+              <input name="phone" type="tel" id="phone_number" required />
             </div>
           </div>
 
