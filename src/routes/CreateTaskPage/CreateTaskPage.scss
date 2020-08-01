@@ -22,7 +22,6 @@ $lightgreen: #d8e0bb;
     padding: 30px;
     width: 80%;
     max-width: 450px;
-    //background-color: lighten($blue, 30%);
     background-color: lighten($lightgreen, 15%);
     margin-top: 20px;
     margin-bottom: 20px;
@@ -33,7 +32,6 @@ $lightgreen: #d8e0bb;
       padding: 5px;
       font-size: 15px;
       border-radius: 5px;
-      //border: 1px solid $green;
       border: none;
     }
 
@@ -57,7 +55,6 @@ $lightgreen: #d8e0bb;
         .start,
         .duration {
           border-radius: 4px;
-          //border: 1px solid $green;
           border: none;
           height: 23px;
         }
@@ -102,6 +99,12 @@ $lightgreen: #d8e0bb;
         background-color: lighten($blue, 28%);
         cursor: pointer;
       }
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .formGroup input {
+      width: 90%;
     }
   }
 }

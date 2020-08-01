@@ -10,4 +10,30 @@ Uforia allows users to create their own account and keep track of daily habits t
 
 HTML, SCSS, Javascript, React
 
-![landing page](./src/images/landing_page.png?raw=true width="150" "Landing Page")
+### Landing page
+
+<img src='/src/images/landing_page.png' width='450' alt='Langing page'>
+
+### Sign up page
+
+<img src='/src/images/signup.png' width='450' alt='Sign up page'>
+
+### Log in page
+
+<img src='/src/images/login.png' width='450' alt='Log in page'>
+
+### Home page
+
+<img src='/src/images/home.png' width='450' alt='Home page'>
+
+### Create goal page
+
+<img src='/src/images/create_goal.png' width='450' alt='Create goal page'>
+
+### Goals queue view
+
+<img src='/src/images/queue.png' width='450' alt='Goals queue'>
+
+### Current goals view
+
+<img src='/src/images/current.png' width='450' alt='Current goals'>

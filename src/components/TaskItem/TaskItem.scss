@@ -6,7 +6,6 @@ $green: #335252;
 .taskItem {
   display: flex;
   border: 2px solid $green;
-  //box-shadow: -12px 36px $green;
   align-items: center;
   margin-bottom: 5px;
   border-radius: 6px;
@@ -47,7 +46,6 @@ $green: #335252;
   }
 
   button {
-    //height: 25px;
     margin-right: 20px;
     padding: 7px;
   }
@@ -92,5 +90,21 @@ $green: #335252;
       color: $red;
       cursor: pointer;
     }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .startDuration {
+    text-align: left;
+  }
+  .startTime {
+    width: 100%;
+    margin-right: 80px;
+    margin-bottom: 4px;
+  }
+
+  .duration {
+    padding-left: 0 !important;
+    margin-top: 0;
   }
 }

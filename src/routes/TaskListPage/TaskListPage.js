@@ -42,7 +42,7 @@ class TaskListPage extends React.Component {
                   <li className="taskListCurrent" key={task.id}>
                     <div className="statusWrapper">
                       <p className="startDate">
-                        Started:{" "}
+                        <span className="hideMobile">Started:</span>{" "}
                         <span className="dynamicInput">
                           {moment(task.start_date).format("MMMM Do YYYY")}
                         </span>
@@ -63,16 +63,8 @@ class TaskListPage extends React.Component {
                           alt="check mark"
                         />
                       )}
-                      {/* {task.target_streak === task.streak && (
-                        <img
-                          className="checked"
-                          src={Checked}
-                          width="30"
-                          height="30"
-                        ></img>
-                      )} */}
                       <p className="streak">
-                        Streak:{" "}
+                        <span className="hideMobile">Streak:</span>{" "}
                         <span className="dynamicInput">{task.streak}</span>
                       </p>
                     </div>

@@ -1,9 +1,6 @@
 import React from "react";
 import "./LandingPage.scss";
 
-// if user has token then redirect to main goals page
-// if not nothing and stay on landing page
-
 class LandingPage extends React.Component {
   render() {
     return (
