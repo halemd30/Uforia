@@ -205,50 +205,6 @@ class App extends React.Component {
     return <Route exact path={"/"} component={LandingPage} />;
   }
 
-  // when to use fetch in setState for a callback?
-  // startTask = (taskId) => {
-  //   this.setState(
-  //     {
-  //       tasks: this.state.tasks.map((task) => {
-  //         if (task.id === taskId) {
-  //           task.start_date = new Date();
-  //         }
-  //         return task;
-  //       }),
-  //     },
-  //     // patch with the id and the key/value that you are changing
-  //     () => {
-  //       fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
-  //         method: "PATCH",
-  //         headers: {
-  //           "content-type": "application/json",
-  //         },
-  //       });
-  //     }
-  //   );
-  // };
-
-  // endTask = (taskId) => {
-  //   this.setState(
-  //     {
-  //       tasks: this.state.tasks.map((task) => {
-  //         if (task.id === taskId) {
-  //           task.end_date = new Date();
-  //         }
-  //         return task;
-  //       }),
-  //     },
-  //     () => {
-  //       fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
-  //         method: "PATCH",
-  //         headers: {
-  //           "content-type": "application/json",
-  //         },
-  //       });
-  //     }
-  //   );
-  // };
-
   render() {
     const contextValue = {
       streak: this.state.streak,
