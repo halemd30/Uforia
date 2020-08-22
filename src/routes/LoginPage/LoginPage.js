@@ -17,8 +17,8 @@ export default class LoginPage extends React.Component {
 
   handleLoginSuccess = () => {
     if (TokenService.getAuthToken()) {
-      this.context.getUserInfo((id) => {
-        this.context.getUserTasks(id, () => {
+      this.context.getUserInfo(() => {
+        this.context.getUserTasks(() => {
           this.props.history.push(`/taskList`);
         });
       });

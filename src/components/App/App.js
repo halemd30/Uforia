@@ -21,8 +21,8 @@ class App extends React.Component {
 
   componentDidMount() {
     if (TokenService.getAuthToken()) {
-      this.getUserInfo((id) => {
-        this.getUserTasks(id, () => {});
+      this.getUserInfo(() => {
+        this.getUserTasks(() => {});
       });
     }
   }
@@ -61,12 +61,12 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((currentUser) => {
-        this.setState({ currentUser }, cb(currentUser.id));
+        this.setState({ currentUser }, cb);
       });
   };
 
-  getUserTasks = (userId, cb) => {
-    return fetch(`${config.API_ENDPOINT}/tasks/${userId}`, {
+  getUserTasks = (cb) => {
+    return fetch(`${config.API_ENDPOINT}/tasks`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
