@@ -68,7 +68,7 @@ class App extends React.Component {
   getUserTasks = (cb) => {
     return fetch(`${config.API_ENDPOINT}/tasks`, {
       headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => res.json())
@@ -88,7 +88,7 @@ class App extends React.Component {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(task),
     })
@@ -113,6 +113,7 @@ class App extends React.Component {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {
@@ -142,6 +143,7 @@ class App extends React.Component {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     }).then(() => {
       this.setState({
@@ -164,6 +166,7 @@ class App extends React.Component {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     }).then(() => {
       this.setState({
@@ -180,6 +183,7 @@ class App extends React.Component {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     }).then(() => {
       this.setState({

@@ -67,9 +67,7 @@ class CreateTaskPage extends React.Component {
 
           <div className="categoryDropdown">
             <select id="categories">
-              <option value="" disabled selected>
-                Pick a category
-              </option>
+              <option defaultValue="Pick a category" disabled></option>
               <option value="waking-up">Waking up</option>
               <option value="exercise">Exercise</option>
               <option value="food">Food</option>

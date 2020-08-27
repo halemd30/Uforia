@@ -36,9 +36,9 @@ class TaskListPage extends React.Component {
             .map((task) => {
               return (
                 <>
-                  <div className="taskComponent">
+                  <li className="taskComponent">
                     <TaskItem {...task} />
-                  </div>
+                  </li>
                   <li className="taskListCurrent" key={task.id}>
                     <div className="statusWrapper">
                       <p className="startDate">
@@ -90,21 +90,6 @@ class TaskListPage extends React.Component {
           {tasks.filter((t) => t.start_date === null && t.end_date === null)
             .length === 0 && <li className="empty">None Available</li>}
         </ul>
-
-        {/* <h3>Completed goals:</h3>
-        <ul>
-          {tasks
-            .filter((t) => t.start_date !== null && t.end_date !== null)
-            .map((task) => {
-              return (
-                <li className="taskListItem" key={task.id}>
-                  <TaskItem {...task} />
-                </li>
-              );
-            })}
-          {tasks.filter((t) => t.start_date !== null && t.end_date !== null)
-            .length === 0 && <li className="empty">None Available</li>}
-        </ul> */}
 
         <p className="createTaskButton">
           <Link className="button" to={"/createTask"}>
