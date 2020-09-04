@@ -1,21 +1,21 @@
-import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import LandingPage from "../../routes/LandingPage/LandingPage";
-import LoginPage from "../../routes/LoginPage/LoginPage";
-import SignUpPage from "../../routes/SignUpPage/SignUpPage";
-import TaskListPage from "../../routes/TaskListPage/TaskListPage";
-import CreateTaskPage from "../../routes/CreateTaskPage/CreateTaskPage";
-import { Route } from "react-router-dom";
-import config from "../../config";
-import Context from "../../Context";
-import TokenService from "../../token-service";
-import "./App.scss";
+import React from 'react';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import LandingPage from '../../routes/LandingPage/LandingPage';
+import LoginPage from '../../routes/LoginPage/LoginPage';
+import SignUpPage from '../../routes/SignUpPage/SignUpPage';
+import TaskListPage from '../../routes/TaskListPage/TaskListPage';
+import CreateTaskPage from '../../routes/CreateTaskPage/CreateTaskPage';
+import { Route } from 'react-router-dom';
+import config from '../../config';
+import Context from '../../Context';
+import TokenService from '../../token-service';
+import './App.scss';
 
 class App extends React.Component {
   state = {
     tasks: [],
-    currentUser: "",
+    currentUser: '',
     streak: 0,
   };
 
@@ -28,51 +28,51 @@ class App extends React.Component {
   }
 
   // credentials: username, password
-  login = (credentials) => {
+  login = credentials => {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(credentials),
-    }).then((res) => {
-      return !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
+    }).then(res => {
+      return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
     });
   };
 
-  postUser = (user) => {
+  postUser = user => {
     return fetch(`${config.API_ENDPOINT}/users`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(user),
-    }).then((res) => {
-      return !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json();
+    }).then(res => {
+      return !res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
     });
   };
 
-  getUserInfo = (cb) => {
+  getUserInfo = cb => {
     fetch(`${config.API_ENDPOINT}/users`, {
-      method: "GET",
+      method: 'GET',
       headers: {
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then((res) => res.json())
-      .then((currentUser) => {
+      .then(res => res.json())
+      .then(currentUser => {
         this.setState({ currentUser }, cb);
       });
   };
 
-  getUserTasks = (cb) => {
+  getUserTasks = cb => {
     return fetch(`${config.API_ENDPOINT}/tasks`, {
       headers: {
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then((res) => res.json())
-      .then((tasks) => {
+      .then(res => res.json())
+      .then(tasks => {
         this.setState(
           {
             tasks,
@@ -80,22 +80,22 @@ class App extends React.Component {
           cb
         );
       })
-      .catch((err) => console.error(err));
+      .catch(err => console.error(err));
   };
 
   addTask = (task, cb) => {
     fetch(`${config.API_ENDPOINT}/tasks`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(task),
     })
-      .then((res) => {
+      .then(res => {
         return res.json();
       })
-      .then((data) => {
+      .then(data => {
         this.setState(
           {
             tasks: [...this.state.tasks, data],
@@ -103,22 +103,22 @@ class App extends React.Component {
           cb
         );
       })
-      .catch((err) => console.error(err));
+      .catch(err => console.error(err));
   };
 
-  deleteTask = (taskId) => {
-    const newTasks = this.state.tasks.filter((task) => task.id !== taskId);
+  deleteTask = taskId => {
+    const newTasks = this.state.tasks.filter(task => task.id !== taskId);
 
     fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then((res) => {
+      .then(res => {
         if (!res.ok) {
-          return res.json().then((error) => {
+          return res.json().then(error => {
             throw error;
           });
         }
@@ -130,9 +130,9 @@ class App extends React.Component {
       });
   };
 
-  startTask = (taskId) => {
+  startTask = taskId => {
     const date = new Date();
-    const taskStart = this.state.tasks.map((task) => {
+    const taskStart = this.state.tasks.map(task => {
       if (task.id === taskId) {
         task.start_date = date;
       }
@@ -140,9 +140,9 @@ class App extends React.Component {
     });
 
     fetch(`${config.API_ENDPOINT}/tasks/${taskId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     }).then(() => {
@@ -152,8 +152,8 @@ class App extends React.Component {
     });
   };
 
-  endTask = (taskId) => {
-    const endStart = this.state.tasks.map((task) => {
+  endTask = taskId => {
+    const endStart = this.state.tasks.map(task => {
       if (task.id === taskId) {
         task.end_date = null;
         task.start_date = null;
@@ -163,9 +163,9 @@ class App extends React.Component {
     });
 
     fetch(`${config.API_ENDPOINT}/tasks/end/${taskId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     }).then(() => {
@@ -175,14 +175,14 @@ class App extends React.Component {
     });
   };
 
-  streakCounter = (taskId) => {
-    let taskFound = this.state.tasks.find((task) => task.id === taskId);
+  streakCounter = taskId => {
+    let taskFound = this.state.tasks.find(task => task.id === taskId);
     taskFound.streak++;
 
     fetch(`${config.API_ENDPOINT}/tasks/${taskId}/modify`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     }).then(() => {
@@ -194,20 +194,12 @@ class App extends React.Component {
 
   resetStreak = (taskId, cb) => {
     fetch(`${config.API_ENDPOINT}/tasks/reset/${taskId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
     }).then(cb);
   };
-
-  renderUserTasks() {
-    return <Route path={"/taskList"} component={TaskListPage} />;
-  }
-
-  renderLandingPage() {
-    return <Route exact path={"/"} component={LandingPage} />;
-  }
 
   render() {
     const contextValue = {
@@ -228,17 +220,17 @@ class App extends React.Component {
 
     return (
       <Context.Provider value={contextValue}>
-        <div className="app">
+        <div className='app'>
           <header>
-            <Route path="/" component={Header} />
+            <Route path='/' component={Header} />
           </header>
 
-          <main className="appMain">
-            <Route exact path={"/"} component={LandingPage} />
-            <Route path={"/login"} component={LoginPage} />
-            <Route path={"/signUp"} component={SignUpPage} />
-            <Route path={"/taskList"} component={TaskListPage} />
-            <Route path={"/createTask"} component={CreateTaskPage} />
+          <main className='appMain'>
+            <Route exact path={'/'} component={LandingPage} />
+            <Route path={'/login'} component={LoginPage} />
+            <Route path={'/signUp'} component={SignUpPage} />
+            <Route path={'/taskList'} component={TaskListPage} />
+            <Route path={'/createTask'} component={CreateTaskPage} />
           </main>
 
           <footer>
